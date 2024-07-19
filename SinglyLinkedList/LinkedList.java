@@ -17,6 +17,7 @@ public void addEnd(int val){
 	Node newNode=new Node(val);
 	if(head==null){
 		head=newNode;
+		return;
 	}
 	Node current=head;
 	while(current.next!=null){
@@ -91,4 +92,21 @@ public void RemoveDuplicatesFromSortedLinkedList(){
 			current=current.next;
 		}
 	}
+}
+public static Node merged(Node l1,Node l2){   // to merge two sorted linked list in sorted order
+	if(l1!=null && l2!=null){
+
+		if(l1.data<l2.data){
+			l1.next=merged(l1.next,l2);
+			return l1;
+		}
+		else{
+			l2.next=merged(l1,l2.next);
+			return l2;
+		}
+	}
+	if(l2==null) return l1;
+	return l2;
+}
+
 }
